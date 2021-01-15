@@ -1,8 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row w-full justify-between max-h-screen">
     <div class="min-h-16 w-full md:w-1/3 overflow-y-auto md:mr-8">
-      Tady bude vyhledavac
-      <button @click="getBooksByQuery">search</button>
+      <Search @search="getBooksByQuery" />
     </div>
     <NetworkCanvas class="w-full md:w-2/3 mb-8" :nodes="nodes" :links="links" />
   </div>
@@ -17,8 +16,13 @@ export default {
     }
   },
   methods: {
-    async getBooksByQuery() {
-      const bindingsStream = await this.$fetcher.getBooksByQuery()
+    async getBooksByQuery(query) {
+      // reset array -> new data incoming
+      this.nodes = []
+      this.links = []
+
+      // fetch
+      const bindingsStream = await this.$fetcher.getBooksByQuery(query)
 
       bindingsStream.on('data', (bindings) => {
         // book node
