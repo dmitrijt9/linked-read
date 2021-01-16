@@ -16,6 +16,7 @@ module.exports = {
         },
         secondary: {
           default: defaultTheme.colors.gray[500],
+          light: defaultTheme.colors.gray[300],
         },
         transparent: defaultTheme.colors.transparent,
         white: defaultTheme.colors.white,

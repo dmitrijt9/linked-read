@@ -1,9 +1,9 @@
 <template>
   <div
-    class="relative border border-primary-light rounded-md space-y-4 overflow-hidden"
+    class="relative border-2 border-secondary-light rounded-md space-y-4 overflow-hidden"
   >
     <div
-      class="px-4 py-6 border-b border-secondary flex justify-between flex-wrap"
+      class="px-4 py-6 border-b border-secondary-light flex justify-between items-end flex-wrap"
     >
       <div>
         <label>Node size</label>
@@ -39,6 +39,17 @@
             v-model="netSettings.force"
           />
           <span>{{ netSettings.force }}</span>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <Button
+            type="secondary"
+            title="Reset custom settings"
+            @click="resetSettings"
+          >
+            Reset settings
+          </Button>
         </div>
       </div>
     </div>
@@ -79,7 +90,7 @@ export default {
       },
     },
   },
-  mounted() {
+  created() {
     this.resetSettings()
   },
   computed: {
@@ -100,7 +111,9 @@ export default {
   },
   methods: {
     resetSettings() {
-      this.$set(this.$data, 'netSettings', defaultNetSettings)
+      this.$set(this.netSettings, 'nodeSize', defaultNetSettings.nodeSize)
+      this.$set(this.netSettings, 'fontSize', defaultNetSettings.fontSize)
+      this.$set(this.netSettings, 'force', defaultNetSettings.force)
     },
   },
 }

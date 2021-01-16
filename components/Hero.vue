@@ -34,13 +34,11 @@
 </template>
 
 <script>
+import utils from '~/lib/utils'
 export default {
   methods: {
     scrollTo(selector) {
-      const el = document.querySelector(selector)
-      if (el) {
-        el.scrollIntoView()
-      }
+      utils.scrollTo(selector, document)
     },
   },
 }
