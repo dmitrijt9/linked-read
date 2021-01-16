@@ -11,7 +11,10 @@
           <div class="flex items-center justify-between w-full md:w-auto">
             <a href="/">
               <span class="sr-only">Linked Read</span>
-              <Icon name="logo" class="h-8 sm:h-16 w-auto text-primary" />
+              <Icon
+                name="logo"
+                class="h-8 sm:h-16 w-auto text-primary animate-pulse"
+              />
             </a>
             <div class="-mr-2 flex items-center md:hidden">
               <button
@@ -33,7 +36,7 @@
             v-for="link in menuLinks"
             :key="link.label"
             :href="link.route"
-            class="font-medium text-black hover:text-secondary"
+            class="font-medium text-base text-secondary hover:text-black transition-colors duration-150"
             >{{ link.label }}</a
           >
         </div>

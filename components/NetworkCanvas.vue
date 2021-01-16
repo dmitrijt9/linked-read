@@ -42,6 +42,12 @@
         </div>
       </div>
       <div>
+        <label>Show link labels</label>
+        <div class="flex items-center space-x-2">
+          <Toggle :open.sync="netSettings.linkLabels" />
+        </div>
+      </div>
+      <div>
         <div class="flex items-center space-x-2">
           <Button
             type="secondary"
@@ -58,6 +64,7 @@
       :net-nodes="nodes"
       :net-links="links"
       :options="options"
+      @node-click="handleNodeClick"
     />
   </div>
 </template>
@@ -70,6 +77,7 @@ const defaultNetSettings = {
   force: 3000,
   nodeSize: 24,
   fontSize: 12,
+  linkLabels: false,
 }
 
 export default {
@@ -100,7 +108,7 @@ export default {
         fontSize: this.netSettings.fontSize,
         force: this.netSettings.force,
         nodeLabels: true,
-        linkLabels: true,
+        linkLabels: this.netSettings.linkLabels,
       }
     },
   },
@@ -114,6 +122,30 @@ export default {
       this.$set(this.netSettings, 'nodeSize', defaultNetSettings.nodeSize)
       this.$set(this.netSettings, 'fontSize', defaultNetSettings.fontSize)
       this.$set(this.netSettings, 'force', defaultNetSettings.force)
+      this.$set(this.netSettings, 'linkLabels', defaultNetSettings.linkLabels)
+    },
+    handleNodeClick(e, node) {
+      if (!node._cssClass.includes('selected')) {
+        this.unselectNode()
+      }
+
+      node = Object.assign(node, { _cssClass: `${node._cssClass} selected` })
+      this.$set(this.nodes, node.index, node)
+      this.$emit('nodeSelect', node)
+    },
+    unselectNode() {
+      const selectedNode = this.nodes.find((n) =>
+        n._cssClass.includes('selected')
+      )
+      if (selectedNode) {
+        this.$set(
+          this.nodes,
+          selectedNode.index,
+          Object.assign(selectedNode, {
+            _cssClass: `${selectedNode._cssClass.replace('selected', '')}`,
+          })
+        )
+      }
     },
   },
 }
