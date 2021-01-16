@@ -1,7 +1,12 @@
 <template>
   <div class="flex flex-col md:flex-row w-full justify-between md:max-h-screen">
     <div class="min-h-16 w-full md:w-1/3 overflow-y-auto md:mr-8 pb-4 md:pb-8">
-      <Search @search="getBooksByQuery" />
+      <div
+        class="w-full mt-4 md:mt-6 flex flex-col items-center md:flex-row md:items-end justify-center"
+      >
+        <Search class="w-full" @search="getBooksByQuery" />
+        <Loader class="mt-4" v-show="isLoading" />
+      </div>
     </div>
     <NetworkCanvas class="w-full md:w-2/3 mb-8" :nodes="nodes" :links="links" />
   </div>
@@ -13,6 +18,7 @@ export default {
     return {
       nodes: [],
       links: [],
+      isLoading: false,
     }
   },
   methods: {
@@ -21,12 +27,14 @@ export default {
       this.nodes = []
       this.links = []
 
+      this.isLoading = true
       // fetch
       const bindings = await this.$fetcher.getBooksByQuery(query)
       if (bindings) {
         this.nodes = bindings.nodes
         this.links = bindings.links
       }
+      this.isLoading = false
     },
   },
 }
