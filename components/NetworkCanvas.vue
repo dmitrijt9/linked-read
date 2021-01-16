@@ -2,7 +2,9 @@
   <div
     class="relative border border-primary-light rounded-md space-y-4 overflow-hidden"
   >
-    <div class="px-4 py-6 border-b border-secondary flex justify-between">
+    <div
+      class="px-4 py-6 border-b border-secondary flex justify-between flex-wrap"
+    >
       <div>
         <label>Node size</label>
         <div class="flex items-center space-x-2">

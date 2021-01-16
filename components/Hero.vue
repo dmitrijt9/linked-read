@@ -10,13 +10,9 @@
             class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0"
           >
             <div class="flex items-center justify-between w-full md:w-auto">
-              <a href="#">
-                <span class="sr-only">Workflow</span>
-                <img
-                  class="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                  alt=""
-                />
+              <a href="/">
+                <span class="sr-only">Linked Read</span>
+                <Icon name="logo" class="h-8 sm:h-16 w-auto text-primary" />
               </a>
               <div class="-mr-2 flex items-center md:hidden">
                 <button
@@ -45,15 +41,12 @@
           <div
             class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
           >
-            <span class="inline-flex rounded-md shadow">
-              <a
-                href="https://github.com/dmitrijt9/linked-read"
-                class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:text-primary-light"
-                target="_blank"
-              >
-                Github
-              </a>
-            </span>
+            <a
+              href="https://github.com/dmitrijt9/linked-read"
+              title="Linked Read Github"
+            >
+              <Button>Github</Button>
+            </a>
           </div>
         </nav>
       </div>
@@ -104,7 +97,7 @@
                   v-for="link in menuLinks"
                   :key="link.label"
                   :href="link.route"
-                  class="block px-3 py-2 rounded-md text-base font-medium text-black hover:text-secondary"
+                  class="block px-3 py-2 rounded-md text-base font-medium text-black bg-secondary bg-opacity-25"
                   role="menuitem"
                   >{{ link.label }}</a
                 >
@@ -112,7 +105,7 @@
               <div role="none">
                 <a
                   href="https://github.com/dmitrijt9/linked-read"
-                  class="block w-full px-5 py-3 text-center font-medium text-primary bg-white hover:text-primary-light"
+                  class="block w-full px-5 py-3 text-center font-medium text-primary hover:text-primary-light"
                   role="menuitem"
                   target="_blank"
                 >
@@ -138,23 +131,20 @@
             ✌
           </p>
           <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-            <div class="rounded-md shadow">
-              <a
-                href="#"
-                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-primary-light md:py-4 md:text-lg md:px-10"
-                @click.prevent="scrollTo('#visualizer')"
-              >
-                Get started
-              </a>
-            </div>
-            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-              <a
-                href="#"
-                class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:text-primary-light md:py-4 md:text-lg md:px-10"
-              >
-                About
-              </a>
-            </div>
+            <Button
+              class="w-full"
+              type="primary"
+              size="lg"
+              @click="scrollTo('#visualizer')"
+              >Get started</Button
+            >
+            <Button
+              class="w-full mt-3 sm:mt-0 sm:ml-3"
+              type="secondary"
+              size="lg"
+              @click="scrollTo('#visualizer')"
+              >About</Button
+            >
           </div>
         </div>
       </main>

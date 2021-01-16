@@ -19,9 +19,10 @@
         class="block w-full max-w-sm pl-10 mr-4 pr-3 py-2 border border-transparent shadow rounded-md leading-5 bg-white placeholder-secondary focus:outline-none focus:border-primary-light sm:text-sm"
         placeholder="Type book name"
         type="search"
+        required
         v-model="query"
       />
-      <Button type="secondary" @click="$emit('search', query)"> Search </Button>
+      <Button type="secondary"> Search </Button>
     </div>
   </form>
 </template>
