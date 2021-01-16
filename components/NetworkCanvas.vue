@@ -106,4 +106,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.node {
+  @apply stroke-current;
+}
+
+.node:hover {
+  @apply text-primary-dark stroke-2 stroke-current;
+}
+</style>

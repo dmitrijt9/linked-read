@@ -7,20 +7,20 @@ const defaultTheme = require('tailwindcss/defaultTheme')
  */
 module.exports = {
   theme: {
-    colors: {
-      primary: {
-        default: defaultTheme.colors.orange[400],
-        light: defaultTheme.colors.orange[300],
-        dark: defaultTheme.colors.orange[600],
-      },
-      secondary: {
-        default: defaultTheme.colors.gray[500],
-      },
-      transparent: defaultTheme.colors.transparent,
-      white: defaultTheme.colors.white,
-      black: defaultTheme.colors.black,
-    },
     extend: {
+      colors: {
+        primary: {
+          default: defaultTheme.colors.orange[400],
+          light: defaultTheme.colors.orange[300],
+          dark: defaultTheme.colors.orange[600],
+        },
+        secondary: {
+          default: defaultTheme.colors.gray[500],
+        },
+        transparent: defaultTheme.colors.transparent,
+        white: defaultTheme.colors.white,
+        black: defaultTheme.colors.black,
+      },
       minHeight: {
         16: '4rem',
       },
