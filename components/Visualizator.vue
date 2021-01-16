@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-col md:flex-row w-full justify-between md:max-h-screen">
+  <div class="flex flex-col md:flex-row w-full justify-between">
     <div
       class="min-h-16 w-full md:w-1/3 overflow-y-auto md:mr-8 pb-4 md:pb-8 space-y-8"
     >
       <div
-        class="w-full mt-4 md:mt-6 flex flex-col items-center md:flex-row md:items-end justify-center"
+        class="w-full mt-4 md:mt-6 flex flex-col items-center md:flex-row justify-center"
       >
-        <Search class="w-full" @search="getBooksByQuery" />
-        <Loader class="mt-4" v-show="isLoading" />
+        <Search class="w-full" @search="searchByQuery" />
       </div>
+      <Loader class="mt-2" v-show="isLoading" />
       <div id="detail">
         <transition
           enter-active-class="duration-500 ease-out"
@@ -22,8 +22,9 @@
         </transition>
       </div>
     </div>
-    <div class="w-full md:w-2/3 py-4 md:py-8" id="visualizator">
+    <div class="w-full md:w-2/3 py-4 md:py-8 h-screen" id="visualizator">
       <NetworkCanvas
+        class="h-full"
         :nodes="nodes"
         :links="links"
         @nodeSelect="handleNodeSelect"
@@ -45,14 +46,23 @@ export default {
     }
   },
   methods: {
-    async getBooksByQuery(query) {
+    async searchByQuery({ query, selectedSearchType }) {
       // reset array -> new data incoming
       this.nodes = []
       this.links = []
 
       this.isLoading = true
+      let bindings = null
       // fetch
-      const bindings = await this.$fetcher.getBooksByQuery(query)
+      if (selectedSearchType === 'book') {
+        bindings = await this.$fetcher.getBooksByQuery(query)
+      } else if (selectedSearchType === 'author') {
+        bindings = await this.$fetcher.getAuthorsByQuery(query)
+      } else {
+        this.isLoading = false
+        return
+      }
+
       if (bindings) {
         this.nodes = bindings.nodes
         this.links = bindings.links
