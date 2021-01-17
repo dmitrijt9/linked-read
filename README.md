@@ -4,7 +4,7 @@ Web app for net visualization of linked data about books and their authors.
 
 For now, data are fetched only from Dbpedia using their [Sparql endpoint](http://dbpedia.org/sparql/).
 
-I woul like to add other endpoints or data dumps later on. Now a content which user can search is quite limited. Also some reasonable integration of [Open library](https://openlibrary.org/developers) would be nice.
+I would like to add other endpoints or data dumps later on. Now a content which user can search is quite limited. Also some reasonable integration of [Open library](https://openlibrary.org/developers) would be nice.
 
 ## Features
 
@@ -15,7 +15,14 @@ User is able to:
 - see relationships between books, authors and their series (if exists)
 - see a detail of selected book
 
-## Build Setup
+## Development
+
+### Prerequisites
+
+- Yarn or Npm
+- Node 10+
+
+### Build Setup
 
 Project is a static web app. Build with [Nuxt.js](https://nuxtjs.org/).
 
