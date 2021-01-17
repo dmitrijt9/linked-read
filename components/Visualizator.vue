@@ -22,7 +22,10 @@
         </transition>
       </div>
     </div>
-    <div class="w-full md:w-2/3 py-4 md:py-8 h-screen" id="visualizator">
+    <div
+      class="w-full md:w-2/3 py-4 md:py-8 h-full md:h-screen"
+      id="visualizator"
+    >
       <NetworkCanvas
         class="h-full"
         :nodes="nodes"

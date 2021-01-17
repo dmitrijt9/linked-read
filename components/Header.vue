@@ -47,7 +47,7 @@
             href="https://github.com/dmitrijt9/linked-read"
             title="Linked Read Github"
           >
-            <Button>Github</Button>
+            <Button><Icon name="github" class="h-4 w-4 mr-2" /> Github</Button>
           </a>
         </div>
       </nav>
@@ -71,11 +71,7 @@
         >
           <div class="px-5 pt-4 flex items-center justify-between">
             <div>
-              <img
-                class="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-primary.svg"
-                alt=""
-              />
+              <Icon name="logo" class="h-8 w-auto text-primary animate-pulse" />
             </div>
             <div class="-mr-2">
               <button
@@ -107,11 +103,12 @@
             <div role="none">
               <a
                 href="https://github.com/dmitrijt9/linked-read"
-                class="block w-full px-5 py-3 text-center font-medium text-primary hover:text-primary-light"
+                class="inline-flex items-center justify-center w-full px-5 py-3 font-medium text-primary hover:text-primary-light"
                 role="menuitem"
                 target="_blank"
               >
-                Github
+                <Icon name="github" class="h-5 w-5 mr-2" />
+                <span>Github</span>
               </a>
             </div>
           </div>

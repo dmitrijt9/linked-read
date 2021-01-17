@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+    <div class="flex-1 bg-white p-4 md:p-6 flex flex-col justify-between">
       <!-- MAIN INFO -->
       <div class="flex-1">
-        <p class="text-lg font-medium text-primary">
+        <p class="text-base md:text-lg font-medium text-primary">
           <a
             v-for="author in book.authors"
             :key="author.iri"
@@ -16,7 +16,7 @@
           </a>
         </p>
         <div href="#" class="block mt-2">
-          <p class="text-xl font-medium text-black">
+          <p class="text-lg md:text-xl font-medium text-black">
             <a
               :href="book.iri"
               target="_blank"
@@ -26,7 +26,7 @@
               {{ book.title }}
             </a>
           </p>
-          <p class="mt-3 text-base text-black text-opacity-75">
+          <p class="mt-3 text-sm md:text-base text-black text-opacity-75">
             {{ book.description }}
           </p>
         </div>
@@ -36,33 +36,31 @@
         <ul
           class="w-full divide-y divide-secondary-light text-sm text-black text-opacity-50"
         >
-          <li v-if="book.isbn" class="px-4 py-4 sm:px-0">
-            ISBN: {{ book.isbn }}
-          </li>
-          <li v-if="book.genre" class="px-4 py-4 sm:px-0">
+          <li v-if="book.isbn" class="py-4 sm:px-0">ISBN: {{ book.isbn }}</li>
+          <li v-if="book.genre" class="py-4 sm:px-0">
             Genre: {{ book.genre }}
           </li>
-          <li v-if="book.pages" class="px-4 py-4 sm:px-0">
+          <li v-if="book.pages" class="py-4 sm:px-0">
             Pages: {{ book.pages }}
           </li>
-          <li v-if="book.publisher" class="px-4 py-4 sm:px-0">
+          <li v-if="book.publisher" class="py-4 sm:px-0">
             Publisher:
             <a
               :href="book.publisher"
               target="_blank"
               rel="nofollow noopener"
-              class="hover:text-secondary transition-colors duration-150"
+              class="text-black text-opacity-50 hover:text-opacity-100 transition-all duration-150"
               >{{ book.publisher }}</a
             >
           </li>
 
           <!-- EXTERNAL LINKS -->
-          <li class="px-4 py-4 sm:px-0">
+          <li class="py-4 sm:px-0">
             <a
               :href="book.iri"
               target="_blank"
               rel="nofollow noopener"
-              class="hover:text-secondary transition-colors duration-150 inline-flex items-center flex-no-wrap"
+              class="text-black text-opacity-50 hover:text-opacity-100 transition-all duration-150 inline-flex items-center flex-no-wrap"
             >
               Dbpedia <Icon name="external-link" class="w-5 h-6 ml-1" />
             </a>
