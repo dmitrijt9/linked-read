@@ -8,7 +8,15 @@
       >
         <Search class="w-full" @search="searchByQuery" />
       </div>
+      <!-- LOADER -->
       <Loader v-show="isLoading" class="mt-2" />
+      <!-- No Results box -->
+      <div
+        v-show="isNoResults"
+        class="inline-flex items-center w-full text-sm text-black text-opacity-50 flex-no-wrap"
+      >
+        <Icon name="ban" class="w-6 h-6 mr-2" /><span>No results</span>
+      </div>
       <div id="detail">
         <transition
           enter-active-class="duration-500 ease-out"
@@ -46,6 +54,7 @@ export default {
       links: [],
       isLoading: false,
       detailNode: null,
+      isNoResults: false,
     }
   },
   methods: {
@@ -53,6 +62,7 @@ export default {
       // reset array -> new data incoming
       this.nodes = []
       this.links = []
+      this.isNoResults = false
 
       this.isLoading = true
       let bindings = null
@@ -70,6 +80,10 @@ export default {
         this.nodes = bindings.nodes
         this.links = bindings.links
       }
+
+      if (bindings.nodes.length === 0 && bindings.links.length === 0) {
+        this.isNoResults = true
+      }
       this.isLoading = false
       utils.scrollTo('#visualizator', document)
     },
@@ -77,6 +91,7 @@ export default {
       if (node.type !== nodeType.book) {
         return
       }
+      this.isNoResults = false
       this.detailNode = null
       this.isLoading = true
       const bookData = await this.$fetcher.getBookDetail(node.id)
