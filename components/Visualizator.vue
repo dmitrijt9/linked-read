@@ -12,10 +12,10 @@
       <Loader v-show="isLoading" class="mt-2" />
       <!-- No Results box -->
       <div
-        v-show="isNoResults"
+        v-if="nodes.length === 0 && links.length === 0"
         class="inline-flex items-center w-full text-sm text-black text-opacity-50 flex-no-wrap"
       >
-        <Icon name="ban" class="w-6 h-6 mr-2" /><span>No results</span>
+        <Icon name="ban" class="w-6 h-6 mr-2" /><span>No data</span>
       </div>
       <div id="detail">
         <transition
@@ -54,23 +54,22 @@ export default {
       links: [],
       isLoading: false,
       detailNode: null,
-      isNoResults: false,
     }
   },
   methods: {
-    async searchByQuery({ query, selectedSearchType }) {
+    async searchByQuery({ query, selectedSearchType, selectedLimit }) {
       // reset array -> new data incoming
       this.nodes = []
       this.links = []
-      this.isNoResults = false
+      this.detailNode = null
 
       this.isLoading = true
       let bindings = null
       // fetch
       if (selectedSearchType === 'book') {
-        bindings = await this.$fetcher.getBooksByQuery(query)
+        bindings = await this.$fetcher.getBooksByQuery(query, selectedLimit)
       } else if (selectedSearchType === 'author') {
-        bindings = await this.$fetcher.getAuthorsByQuery(query)
+        bindings = await this.$fetcher.getAuthorsByQuery(query, selectedLimit)
       } else {
         this.isLoading = false
         return
@@ -81,10 +80,8 @@ export default {
         this.links = bindings.links
       }
 
-      if (bindings.nodes.length === 0 && bindings.links.length === 0) {
-        this.isNoResults = true
-      }
       this.isLoading = false
+      this.submitted = false
       utils.scrollTo('#visualizator', document)
     },
     async handleNodeSelect(node) {
