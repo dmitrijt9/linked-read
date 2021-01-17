@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-white">
     <div
-      class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8"
+      class="max-w-9xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8"
     >
       <div class="flex justify-center space-x-6 md:order-2">
         <a
@@ -25,7 +25,9 @@
           class="text-center text-base text-secondary inline-flex items-center w-full justify-center"
         >
           &copy; Made with
-          <span><Icon name="heart" class="w-6 h-6 mx-1 text-red-400" /></span>
+          <span
+            ><Icon name="heart" class="w-6 h-6 mx-1 text-primary-dark"
+          /></span>
           by
           <a
             class="hover:text-primary mx-1 transition-all duration-150"

@@ -25,9 +25,14 @@ module.exports = {
       minHeight: {
         16: '4rem',
       },
+      maxWidth: {
+        '9xl': '96rem',
+      },
     },
   },
-  variants: {},
+  variants: {
+    animation: ['group-hover'],
+  },
   plugins: [],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css

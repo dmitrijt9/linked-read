@@ -1,6 +1,6 @@
 <template>
   <div class="relative py-6 sm:py-10 z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-9xl mx-auto px-4 sm:px-6">
       <nav
         class="relative flex items-center justify-between sm:h-10 md:justify-center"
         aria-label="Global"
@@ -13,9 +13,9 @@
               <span class="sr-only">Linked Read</span>
               <Icon
                 name="logo"
-                class="h-8 sm:h-16 w-auto text-primary animate-pulse"
+                class="h-8 sm:h-16 w-auto text-primary-dark animate-pulse"
               />
-              <span class="md:hidden text-primary ml-3 font-sans text-base"
+              <span class="md:hidden text-primary-dark ml-3 font-sans text-base"
                 >Linked Read</span
               >
             </a>
@@ -35,13 +35,14 @@
           </div>
         </div>
         <div class="hidden md:flex md:space-x-10">
-          <a
+          <NuxtLink
             v-for="link in menuLinks"
             :key="link.label"
-            :href="link.route"
+            :to="link.route"
             class="font-medium text-base text-secondary hover:text-black transition-colors duration-150"
-            >{{ link.label }}</a
           >
+            {{ link.label }}
+          </NuxtLink>
         </div>
         <div
           class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0"
@@ -74,8 +75,11 @@
         >
           <div class="px-5 pt-4 flex items-center justify-between">
             <div class="inline-flex items-center">
-              <Icon name="logo" class="h-8 w-auto text-primary animate-pulse" />
-              <span class="md:hidden text-primary ml-3 font-sans text-sm"
+              <Icon
+                name="logo"
+                class="h-8 w-auto text-primary-dark animate-pulse"
+              />
+              <span class="md:hidden text-primary-dark ml-3 font-sans text-sm"
                 >Linked Read</span
               >
             </div>
@@ -97,14 +101,15 @@
             aria-labelledby="main-menu"
           >
             <div class="px-2 pt-2 pb-3" role="none">
-              <a
+              <NuxtLink
                 v-for="link in menuLinks"
                 :key="link.label"
-                :href="link.route"
+                :to="link.route"
                 class="block px-3 py-2 rounded-md text-base font-medium text-black bg-secondary-light text-opacity-75 focus:bg-secondary bg-opacity-50"
                 role="menuitem"
-                >{{ link.label }}</a
               >
+                {{ link.label }}
+              </NuxtLink>
             </div>
             <div role="none">
               <a
@@ -131,6 +136,10 @@ export default {
       menuOpen: false,
       menuLinks: [
         {
+          label: 'Home',
+          route: '/',
+        },
+        {
           label: 'About',
           route: 'about',
         },
@@ -139,3 +148,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.nuxt-link-exact-active {
+  @apply border-b-2 border-primary;
+}
+</style>
