@@ -1,5 +1,5 @@
 <template>
-  <div class="relative py-8 sm:py-10">
+  <div class="relative py-6 sm:py-10 z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <nav
         class="relative flex items-center justify-between sm:h-10 md:justify-center"
@@ -9,12 +9,15 @@
           class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0"
         >
           <div class="flex items-center justify-between w-full md:w-auto">
-            <a href="/">
+            <a href="/" class="inline-flex items-center">
               <span class="sr-only">Linked Read</span>
               <Icon
                 name="logo"
                 class="h-8 sm:h-16 w-auto text-primary animate-pulse"
               />
+              <span class="md:hidden text-primary ml-3 font-sans text-base"
+                >Linked Read</span
+              >
             </a>
             <div class="-mr-2 flex items-center md:hidden">
               <button
@@ -70,8 +73,11 @@
           class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"
         >
           <div class="px-5 pt-4 flex items-center justify-between">
-            <div>
+            <div class="inline-flex items-center">
               <Icon name="logo" class="h-8 w-auto text-primary animate-pulse" />
+              <span class="md:hidden text-primary ml-3 font-sans text-sm"
+                >Linked Read</span
+              >
             </div>
             <div class="-mr-2">
               <button
@@ -95,7 +101,7 @@
                 v-for="link in menuLinks"
                 :key="link.label"
                 :href="link.route"
-                class="block px-3 py-2 rounded-md text-base font-medium text-black bg-secondary bg-opacity-25"
+                class="block px-3 py-2 rounded-md text-base font-medium text-black bg-secondary-light text-opacity-75 focus:bg-secondary bg-opacity-50"
                 role="menuitem"
                 >{{ link.label }}</a
               >
