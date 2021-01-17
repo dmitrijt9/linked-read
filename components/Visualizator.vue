@@ -8,7 +8,7 @@
       >
         <Search class="w-full" @search="searchByQuery" />
       </div>
-      <Loader class="mt-2" v-show="isLoading" />
+      <Loader v-show="isLoading" class="mt-2" />
       <div id="detail">
         <transition
           enter-active-class="duration-500 ease-out"
@@ -23,8 +23,8 @@
       </div>
     </div>
     <div
-      class="w-full md:w-2/3 py-4 md:py-8 h-full md:h-screen"
       id="visualizator"
+      class="w-full md:w-2/3 py-4 md:py-8 h-full md:h-screen"
     >
       <NetworkCanvas
         class="h-full"

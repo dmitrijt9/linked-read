@@ -21,9 +21,9 @@
             </a>
             <div class="-mr-2 flex items-center md:hidden">
               <button
+                id="main-menu"
                 type="button"
                 class="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-black hover:text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                id="main-menu"
                 aria-haspopup="true"
                 @click="menuOpen = true"
               >
@@ -66,8 +66,8 @@
       leave-to-class="opacity-0 scale-95"
     >
       <div
-        class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
         v-if="menuOpen"
+        class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
       >
         <div
           class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"

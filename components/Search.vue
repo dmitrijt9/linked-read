@@ -1,7 +1,7 @@
 <template>
   <form
-    @submit.prevent="$emit('search', { query, selectedSearchType })"
     class="flex flex-col space-y-4"
+    @submit.prevent="$emit('search', { query, selectedSearchType })"
   >
     <label for="search" class="text-lg font-light">
       Search your book or author
@@ -15,6 +15,7 @@
       </div>
       <input
         id="search"
+        v-model="query"
         name="search"
         class="block w-full max-w-sm pl-10 mr-4 pr-3 py-2 border border-transparent shadow rounded-md leading-5 bg-white placeholder-secondary focus:outline-none focus:border-primary-light sm:text-sm"
         :placeholder="`${
@@ -22,17 +23,16 @@
         }`"
         type="search"
         required
-        v-model="query"
       />
       <Button type="secondary"> Search </Button>
     </div>
     <div class="flex flex-wrap">
       <div class="inline-flex items-center flex-no-wrap space-x-1 p-1">
-        <input type="radio" value="book" v-model="selectedSearchType" />
+        <input v-model="selectedSearchType" type="radio" value="book" />
         <label class="text-sm text-black text-opacity-75">Search book</label>
       </div>
       <div class="inline-flex items-center flex-no-wrap space-x-1 p-1">
-        <input type="radio" value="author" v-model="selectedSearchType" />
+        <input v-model="selectedSearchType" type="radio" value="author" />
         <label class="text-sm text-black text-opacity-75">Search author</label>
       </div>
     </div>

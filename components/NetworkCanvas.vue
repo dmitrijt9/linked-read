@@ -9,10 +9,10 @@
         <label>Node size</label>
         <div class="flex items-center space-x-2">
           <input
+            v-model="netSettings.nodeSize"
             type="range"
             min="10"
             max="100"
-            v-model="netSettings.nodeSize"
           />
           <span>{{ netSettings.nodeSize }}</span>
         </div>
@@ -21,10 +21,10 @@
         <label>Font size</label>
         <div class="flex items-center space-x-2">
           <input
+            v-model="netSettings.fontSize"
             type="range"
             min="10"
             max="36"
-            v-model="netSettings.fontSize"
           />
           <span>{{ netSettings.fontSize }}</span>
         </div>
@@ -33,10 +33,10 @@
         <label>Force</label>
         <div class="flex items-center space-x-2">
           <input
+            v-model="netSettings.force"
             type="range"
             min="1000"
             max="5000"
-            v-model="netSettings.force"
           />
           <span>{{ netSettings.force }}</span>
         </div>
@@ -98,8 +98,10 @@ export default {
       },
     },
   },
-  created() {
-    this.resetSettings()
+  data() {
+    return {
+      netSettings: {},
+    }
   },
   computed: {
     options() {
@@ -112,10 +114,8 @@ export default {
       }
     },
   },
-  data() {
-    return {
-      netSettings: {},
-    }
+  created() {
+    this.resetSettings()
   },
   methods: {
     resetSettings() {
